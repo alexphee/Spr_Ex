@@ -1,5 +1,6 @@
 package myPack.test.service;
 
+import java.util.Date;
 import java.util.List;
 
 import myPack.test.entity.ImpExp;
@@ -10,6 +11,6 @@ public interface ImpExpService {
 	public void addImpExp(ImpExp impexp);
 	 public void updateImpExp(Integer id, ImpExp impexp);
 	 public void deleteImpExp(Integer id); 
-	    int findByBarcode(int barcode, int date);
+	    int findByBarcode(int barcode, Date date);
 
 }

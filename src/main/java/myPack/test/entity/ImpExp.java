@@ -1,6 +1,7 @@
 package myPack.test.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ public class ImpExp implements Serializable{
 	@Column(name="id")
 	private int id;
 	@Column(name="date")
-	private int date;
+	private Date date;
 	@Column(name="name")
 	private String name;
 	@Column(name="barcode")
@@ -32,7 +33,9 @@ public class ImpExp implements Serializable{
 	
 	public ImpExp() {}
 
-	public ImpExp(int id, int date, String name, int barcode, String action, int quantity) {
+
+
+	public ImpExp(int id, Date date, String name, int barcode, String action, int quantity) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -42,7 +45,7 @@ public class ImpExp implements Serializable{
 		this.quantity = quantity;
 	}
 
-	public ImpExp(int id, int date, String name, int barcode, int shelfId, int storageId, String action,
+	public ImpExp(int id, Date date, String name, int barcode, int shelfId, int storageId, String action,
 			int quantity) {
 		super();
 		this.id = id;
@@ -63,11 +66,11 @@ public class ImpExp implements Serializable{
 		this.id = id;
 	}
 
-	public int getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
