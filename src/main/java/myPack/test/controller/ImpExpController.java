@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import myPack.test.entity.ImpExp;
+import myPack.test.entity.RequestWrapper;
 import myPack.test.entity.Shelf;
 import myPack.test.entity.Storage;
 import myPack.test.service.ImpExpService;
@@ -48,11 +51,20 @@ public class ImpExpController {
  public void deleteImpExp(@PathVariable int id) {
 	  impexpService.deleteImpExp(id);
  }
+ 
  @GetMapping("/stock/{barcode}/{date}")
 	@ResponseBody
-	public int findByBarcode(@PathVariable int barcode, @PathVariable Date date){
+	public int findByBarcode(@PathVariable int barcode, @PathVariable @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) Date date ){
 		
 		return impexpService.findByBarcode(barcode,date);
 	}
  
-}
+ @PostMapping("/stockList")
+ public ResponseEntity<RequestWrapper> update(@RequestBody RequestWrapper requestWrapper){
+	 requestWrapper.getImpExp().stream().forEach(i -> i.set);
+ }
+	 
+ }
+/*
+ * @GetMapping("/stockList") public }
+ */
