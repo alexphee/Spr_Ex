@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import myPack.test.entity.ImpExp;
+import myPack.test.entity.Orders;
 
 public interface ImpExpService {	
 	public List getAllImpExp();
@@ -11,6 +12,8 @@ public interface ImpExpService {
 	public void addImpExp(ImpExp impexp);
 	 public void updateImpExp(Integer id, ImpExp impexp);
 	 public void deleteImpExp(Integer id); 
-	    int findByBarcode(int barcode, Date date);
-
+		/*
+		 * int findByBarcode(int barcode, Date date);
+		 */
+	void saveOrder(Orders orders);
 }

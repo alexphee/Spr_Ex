@@ -34,10 +34,9 @@ private ShelfService shelfService;
 	 return productService.getProduct(id);
  }
 
- @PostMapping(value="/products/{storageid}/{shelfid}")
- public void addProduct(@RequestBody Product product, @PathVariable int storageid, @PathVariable int shelfid){
+ @PostMapping(value="/products/{shelfid}")
+ public void addProduct(@RequestBody Product product,  @PathVariable int shelfid){
 	 product.setShelf(new Shelf(shelfid," "));
-	 product.setStorage(new Storage(storageid," "));
 	 productService.addProduct(product);
  }
 

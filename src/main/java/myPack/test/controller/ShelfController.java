@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import myPack.test.entity.Shelf;
+import myPack.test.entity.Storage;
 import myPack.test.service.ShelfService;
 
 @RestController
@@ -30,8 +31,9 @@ public class ShelfController {
 	 return shelfService.getShelf(id);
  }
 
- @PostMapping(value="/shelves")
- public void addShelf(@RequestBody Shelf shelf) {
+ @PostMapping(value="/shelves/{storageid}")
+ public void addShelf(@RequestBody Shelf shelf, @PathVariable int storageid) {
+	 shelf.setStorage(new Storage(storageid,""));
 	 shelfService.addShelf(shelf);
  }
  @PutMapping(value="/shelves/{id}")

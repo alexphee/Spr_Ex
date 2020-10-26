@@ -19,7 +19,9 @@ public class Shelf implements Serializable{
  private int id;
  @Column(name="shelf_name")
  private String shelfName;
-
+ @ManyToOne()
+ private Storage storage;
+ 
  public Shelf() {
 }
 
@@ -28,6 +30,16 @@ public Shelf(int id, String shelfName) {
 	this.id = id;
 	this.shelfName = shelfName;
 }
+
+
+
+public Shelf(int id, String shelfName, int storageId) {
+	super();
+	this.id = id;
+	this.shelfName = shelfName;
+	this.storage = new Storage(storageId," ");
+}
+
 
 public int getId() {
 	return id;
@@ -44,6 +56,17 @@ public String getShelfName() {
 public void setShelfName(String shelfName) {
 	this.shelfName = shelfName;
 }
+
+
+public Storage getStorage() {
+	return storage;
+}
+
+
+public void setStorage(Storage storage) {
+	this.storage = storage;
+}
+
 
 @Override
 public String toString() {

@@ -20,8 +20,6 @@ public class Product implements Serializable{
  private String unit;
 @ManyToOne()
  private Shelf shelf;
-@ManyToOne()
-private Storage storage;
  
  public Product() {
 }
@@ -32,12 +30,11 @@ private Storage storage;
 	this.unit = unit;
 }
 
-public Product(int barcode, String productName, String unit, int shelfId, int storageId) {
+public Product(int barcode, String productName, String unit, int shelfId) {
 	this.barcode = barcode;
 	this.productName = productName;
 	this.unit=unit;
 	this.shelf = new Shelf(shelfId," ");
-	this.storage=new Storage(storageId," ");
 }
 
 public int getBarcode() {
@@ -73,14 +70,6 @@ public void setUnit(String unit) {
 	this.unit = unit;
 }
 
-
-public Storage getStorage() {
-	return storage;
-}
-
-public void setStorage(Storage storage) {
-	this.storage = storage;
-}
 
 @Override
 public String toString() {

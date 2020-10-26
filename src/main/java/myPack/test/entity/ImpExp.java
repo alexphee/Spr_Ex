@@ -18,115 +18,90 @@ public class ImpExp implements Serializable{
 	private int id;
 	@Column(name="date")
 	private Date date;
+	@Column(name="type")
+	private String type;
 	@Column(name="name")
 	private String name;
-	@Column(name="barcode")
-	private int barcode;
+
 	@ManyToOne()
-	 private Shelf shelf;
-	@ManyToOne()
-	private Storage storage;
-	@Column(name="action")
-	private String action;
-	@Column(name="quantity")
-	private int quantity;
-	
+	 private Orders orders;
+
 	public ImpExp() {}
-
-
-
-	public ImpExp(int id, Date date, String name, int barcode, String action, int quantity) {
+	
+	
+	public ImpExp(int id, Date date, String type, String name) {
 		super();
 		this.id = id;
 		this.date = date;
+		this.type = type;
 		this.name = name;
-		this.barcode = barcode;
-		this.action = action;
-		this.quantity = quantity;
 	}
 
-	public ImpExp(int id, Date date, String name, int barcode, int shelfId, int storageId, String action,
-			int quantity) {
+
+	public ImpExp(int id, Date date, String type, String name, int ordersBarcode, int shelfId, int quantity) {
 		super();
 		this.id = id;
 		this.date = date;
+		this.type = type;
 		this.name = name;
-		this.barcode = barcode;
-		this.shelf = new Shelf(shelfId, " ");
-		this.storage = new Storage(storageId," ");
-		this.action = action;
-		this.quantity = quantity;
+		this.orders = new Orders(ordersBarcode,shelfId,quantity);
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public Date getDate() {
 		return date;
 	}
 
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getBarcode() {
-		return barcode;
+
+	public Orders getOrders() {
+		return orders;
 	}
 
-	public void setBarcode(int barcode) {
-		this.barcode = barcode;
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
 	}
 
-	public Shelf getShelf() {
-		return shelf;
-	}
-
-	public void setShelf(Shelf shelf) {
-		this.shelf = shelf;
-	}
-
-	public Storage getStorage() {
-		return storage;
-	}
-
-	public void setStorage(Storage storage) {
-		this.storage = storage;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 	@Override
 	public String toString() {
-		return "ImpExp [id=" + id + ", date=" + date + ", name=" + name + ", barcode=" + barcode + ", shelf=" + shelf
-				+ ", storage=" + storage + ", action=" + action + ", quantity=" + quantity + "]";
+		return "ImpExp [id=" + id + ", date=" + date + ", type=" + type + ", name=" + name + "]";
 	}
-	
-	
+
+
 }
