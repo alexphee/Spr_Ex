@@ -5,11 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="orders")
-public class Orders implements Serializable{
+public class Order implements Serializable{
 	@Id
 	@Column(name="id")
 	private int id;
@@ -20,10 +21,13 @@ public class Orders implements Serializable{
 	@Column(name="quantity")
 	private int quantity;
 	
-	public Orders() {}
+	@ManyToOne
+	private ImpExp impexp;
+	
+	public Order() {}
 
 	
-	public Orders(int barcode, int shelfId, int quantity) {
+	public Order(int barcode, int shelfId, int quantity) {
 		super();
 		this.barcode = barcode;
 		this.shelfId = shelfId;
@@ -31,7 +35,7 @@ public class Orders implements Serializable{
 	}
 
 
-	public Orders(int id, int barcode, int shelfId, int quantity) {
+	public Order(int id, int barcode, int shelfId, int quantity) {
 		super();
 		this.id = id;
 		this.barcode = barcode;

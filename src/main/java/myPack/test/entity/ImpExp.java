@@ -2,11 +2,14 @@ package myPack.test.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +26,8 @@ public class ImpExp implements Serializable{
 	@Column(name="name")
 	private String name;
 
-	@ManyToOne()
-	 private Orders orders;
+	@OneToMany( orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+	 private Order orders;
 
 	public ImpExp() {}
 	
@@ -44,7 +47,7 @@ public class ImpExp implements Serializable{
 		this.date = date;
 		this.type = type;
 		this.name = name;
-		this.orders = new Orders(ordersBarcode,shelfId,quantity);
+		this.orders = new Order(ordersBarcode,shelfId,quantity);
 	}
 
 
@@ -88,12 +91,12 @@ public class ImpExp implements Serializable{
 	}
 
 
-	public Orders getOrders() {
+	public Order getOrders() {
 		return orders;
 	}
 
 
-	public void setOrders(Orders orders) {
+	public void setOrders(Order orders) {
 		this.orders = orders;
 	}
 

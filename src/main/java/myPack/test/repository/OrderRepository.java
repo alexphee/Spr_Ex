@@ -2,8 +2,8 @@ package myPack.test.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import myPack.test.entity.Orders;
+import myPack.test.entity.Order;
 
-public interface OrderRepository extends JpaRepository<Orders, Integer> {
+public interface OrderRepository extends JpaRepository<Order, Integer>{
 
 }

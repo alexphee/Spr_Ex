@@ -1,7 +1,6 @@
 package myPack.test.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import myPack.test.entity.ImpExp;
-import myPack.test.entity.Orders;
-import myPack.test.entity.OrdersWrapper;
+import myPack.test.entity.Order;
 import myPack.test.service.ImpExpService;
 
 @RestController
@@ -33,15 +31,10 @@ public class ImpExpController {
  }
 
  
-  
- @PostMapping( value="/impexp",consumes="application/json",produces="application/json")
- public void addImpExp(@RequestBody ImpExp impexp, @RequestBody OrdersWrapper wrapper) {
-	 for(Orders orders : wrapper.getOrders()) {
-		 impexpService.saveOrder(orders);
-	 }
-	 impexpService.addImpExp(impexp);
+ @PostMapping(value="/impexp")
+ public void addImpExp(@RequestBody ImpExp impexp, @RequestBody List<Order> orders) {
+	 impexpService.addImpExp(impexp,orders);
  }
- 
  
  
  @PutMapping(value="/impexp/{id}")
