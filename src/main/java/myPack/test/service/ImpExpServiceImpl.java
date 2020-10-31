@@ -1,6 +1,7 @@
 package myPack.test.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,7 @@ public ImpExp getImpExp(Integer id) {
 	 return impexpRepo.findById(id).orElse(null);}
  
 @Override
-public void addImpExp(ImpExp impexp,List<Order> orders) {
-	impexpRepo.save(impexp);
+public void addImpExp(List<Order> orders) {
 	orderRepo.save(orders);
 }
 

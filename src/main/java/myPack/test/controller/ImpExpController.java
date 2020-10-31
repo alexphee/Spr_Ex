@@ -32,8 +32,9 @@ public class ImpExpController {
 
  
  @PostMapping(value="/impexp")
- public void addImpExp(@RequestBody ImpExp impexp, @RequestBody List<Order> orders) {
-	 impexpService.addImpExp(impexp,orders);
+ public ImpExp addImpExp(@RequestBody ImpExp impexp) {
+	return new ImpExp(impexpService.addImpExp(impexp));
+
  }
  
  

@@ -26,21 +26,13 @@ public class Order implements Serializable{
 	
 	public Order() {}
 
-	
-	public Order(int barcode, int shelfId, int quantity) {
-		super();
-		this.barcode = barcode;
-		this.shelfId = shelfId;
-		this.quantity = quantity;
-	}
-
-
-	public Order(int id, int barcode, int shelfId, int quantity) {
+	public Order(int id, int barcode, int shelfId, int quantity, ImpExp impexp) {
 		super();
 		this.id = id;
 		this.barcode = barcode;
 		this.shelfId = shelfId;
 		this.quantity = quantity;
+		this.impexp = impexp;
 	}
 
 	public int getId() {
@@ -75,10 +67,20 @@ public class Order implements Serializable{
 		this.quantity = quantity;
 	}
 
+	public ImpExp getImpexp() {
+		return impexp;
+	}
+
+	public void setImpexp(ImpExp impexp) {
+		this.impexp = impexp;
+	}
+
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", barcode=" + barcode + ", shelfId=" + shelfId + ", quantity=" + quantity + "]";
+		return "Order [id=" + id + ", barcode=" + barcode + ", shelfId=" + shelfId + ", quantity=" + quantity
+				+ ", impexp=" + impexp + "]";
 	}
+
 	
 	
 }

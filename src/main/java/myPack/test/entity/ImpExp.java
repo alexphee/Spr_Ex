@@ -1,6 +1,7 @@
 package myPack.test.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class ImpExp implements Serializable{
 	@Column(name="name")
 	private String name;
 
-	@OneToMany( orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-	 private Order orders;
+	@OneToMany(mappedBy = "imp_exp", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+	 private List<Order> orders = new ArrayList<>();
 
 	public ImpExp() {}
 	
@@ -41,13 +42,13 @@ public class ImpExp implements Serializable{
 	}
 
 
-	public ImpExp(int id, Date date, String type, String name, int ordersBarcode, int shelfId, int quantity) {
+	public ImpExp(int id, Date date, String type, String name, List<Order> orders) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.type = type;
 		this.name = name;
-		this.orders = new Order(ordersBarcode,shelfId,quantity);
+		this.orders = orders;
 	}
 
 
@@ -91,20 +92,16 @@ public class ImpExp implements Serializable{
 	}
 
 
-	public Order getOrders() {
+	public List<Order> getOrders() {
 		return orders;
 	}
 
 
-	public void setOrders(Order orders) {
+	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-
-
-	@Override
-	public String toString() {
-		return "ImpExp [id=" + id + ", date=" + date + ", type=" + type + ", name=" + name + "]";
-	}
-
+ public void addOrderList(Order order) {
+	 this.orders.add(order);
+ }
 
 }
