@@ -27,22 +27,16 @@ public class ImpExp implements Serializable{
 	@Column(name="name")
 	private String name;
 
-	@OneToMany(mappedBy = "imp_exp", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "imp_exp", orphanRemoval = true, 
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
+					CascadeType.DETACH, CascadeType.REFRESH, 
+					CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	 private List<Order> orders = new ArrayList<>();
 
 	public ImpExp() {}
 	
-	
-	public ImpExp(int id, Date date, String type, String name) {
-		super();
-		this.id = id;
-		this.date = date;
-		this.type = type;
-		this.name = name;
-	}
-
-
-	public ImpExp(int id, Date date, String type, String name, List<Order> orders) {
+	public ImpExp(int id, Date date, String type, 
+			String name, List<Order> orders) {
 		super();
 		this.id = id;
 		this.date = date;

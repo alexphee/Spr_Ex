@@ -26,7 +26,8 @@ public class Order implements Serializable{
 	
 	public Order() {}
 
-	public Order(int id, int barcode, int shelfId, int quantity, ImpExp impexp) {
+	public Order(int id, int barcode, int shelfId, 
+			int quantity, ImpExp impexp) {
 		super();
 		this.id = id;
 		this.barcode = barcode;
