@@ -33,7 +33,7 @@ public class ImpExpController {
  
  @PostMapping(value="/impexp")
  public ImpExp addImpExp(@RequestBody ImpExp impexp) {
-	return new ImpExp(impexpService.addImpExp(impexp));
+	return impexpService.addImpExp(impexp);
 
  }
  

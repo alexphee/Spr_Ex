@@ -9,7 +9,7 @@ import myPack.test.entity.Order;
 public interface ImpExpService {	
 	public List getAllImpExp();
 	public ImpExp getImpExp (Integer id);
-	public void addImpExp(List<Order> orders);
+	public ImpExp addImpExp(ImpExp impexp);
 	 public void updateImpExp(Integer id, ImpExp impexp);
 	 public void deleteImpExp(Integer id); 
 		/*

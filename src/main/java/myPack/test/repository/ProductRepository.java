@@ -2,12 +2,11 @@ package myPack.test.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import myPack.test.entity.Product;
-import myPack.test.entity.Shelf;
 
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	public List<Product> findByShelfId(int shelfid);
 }

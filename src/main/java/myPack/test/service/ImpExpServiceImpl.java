@@ -31,8 +31,11 @@ public ImpExp getImpExp(Integer id) {
 	 return impexpRepo.findById(id).orElse(null);}
  
 @Override
-public void addImpExp(List<Order> orders) {
-	orderRepo.save(orders);
+public ImpExp addImpExp(ImpExp impexp) {
+	for(Order order: impexp.getOrders()) {
+		order.setImpexp(impexp);
+	}
+	return impexpRepo.save(impexp);
 }
 
 @Override
